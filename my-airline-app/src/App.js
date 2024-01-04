@@ -13,6 +13,7 @@ import CustomerSignup from './components/auth/customsinup';
 import AirlineSignup from './components/auth/airlinesignup';
 import CustomerDashboard from './components/customer/components/dashboard';
 import ExecutiveDashboard from './components/executive/edashboard';
+import AddFlight from './components/airline/components/flightadd';
 import AccordionSection from './components/executive/ehome';
 import Airlinedashboard from './components/airline/components/Adashboard';
 import NavbarComponent from './components/customer/components/navbar';
@@ -39,6 +40,7 @@ import UpdateFlight from './components/airline/components/updateFlight';
 import AirlineHelp from './components/airline/components/airlinehelp';
 import SeatAddition from './components/airline/components/addingseats';
 import FlightsPage from './components/airline/components/allflights';
+
 // Import other components
 
 function App() {
@@ -63,6 +65,7 @@ function App() {
             <Route path='/airline/components/showroutes' element={<ShowRoutes />} />
             <Route path='/airline/components/allflights' element={<FlightsPage />} />
             <Route path='/airline/components/routeaccordino' element={<RouteAccordion/>} />
+            <Route path='/airline/components/flightadd' element={<AddFlight/>} />
             <Route path='/airline/components/route' element={<FlightRoute />} />
             <Route path='/airline/components/addflight' element={<AddFlightForm/>} />
             <Route path='/airline/components/parentsinup' element={<YourParentComponent/>} />
@@ -79,7 +82,7 @@ function App() {
             <Route path='/customer/components/booking' element={<BookingPage />} />
             <Route path='/customer/components/booking/:fid' element={<BookingPage />} />
             <Route path='/executive/components/enavbar' element={<ENavbarComponent/>}/>
-            <Route path='/executive/addairline/:aid' element={<AddAirline />} />
+            <Route path='/executive/addairline' element={<AddAirline />} />
             <Route path='/executive/deleteairline' element={<DeleteAirline />} />
             <Route path='/executive/viewairline' element={<GetAllAirlines />} />
 

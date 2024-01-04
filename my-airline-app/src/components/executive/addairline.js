@@ -1,89 +1,52 @@
-import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+// GetAllAirlines.js
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ENavbarComponent from './enavbar';
+import './GetAllAirlines.css'; // Import the CSS file
 
-const AddAirline = () => {
-  const [name, setName] = useState('');
-  const [code, setCode] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const GetAllAirlines = () => {
+  const [airlines, setAirlines] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleAddAirline = async () => {
-    try {
-      const response = await axios.post('http://localhost:8081/airline/add', {
-        name,
-        code,
-        user: {
-          username,
-          password,
-        },
-      });
+  useEffect(() => {
+    const fetchAirlines = async () => {
+      try {
+        const response = await axios.get('http://localhost:8081/airline/getall');
+        setAirlines(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching airlines:', error);
+        setLoading(false);
+      }
+    };
 
-      console.log('Airline added successfully:', response.data);
-      // You can perform additional actions after adding the airline if needed.
-    } catch (error) {
-      console.error('Error adding airline:', error);
-    }
-  };
+    fetchAirlines();
+  }, []); // Empty dependency array to run the effect only once on mount
 
   return (
-    <div> <ENavbarComponent/>
-    <Container className="my-4">
-      <Row className="justify-content-center">
-        <Col md={6}>
-          <h2 className="text-center mb-4">Add Airline</h2>
-          <Form>
-            <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter airline name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="code">
-              <Form.Label>Code</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter airline code"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-
-            <Button variant="danger" type="button" onClick={handleAddAirline}>
-              Add Airline
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <ENavbarComponent />
+      <div className="container mt-4">
+        <h2 className="text-center mb-4">All Airlines</h2>
+        {loading ? (
+          <p className="text-center">Loading...</p>
+        ) : (
+          <div className="list-group-container">
+            <ul className="list-group">
+              {airlines.map((airline) => (
+                <li key={airline.id} className="list-group-item">
+                  <strong>{airline.name}</strong> - {airline.code}
+                </li>
+              ))}
+            </ul>
+            <div className="pagination-container">
+              {/* Pagination goes here */}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default AddAirline;
+export default GetAllAirlines;

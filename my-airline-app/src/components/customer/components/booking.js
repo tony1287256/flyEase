@@ -81,7 +81,7 @@ const BookingPage = () => {
     setShowConfirmationModal(false);
 
     // Navigate to payment gateway or any other page
-    navigate("/payment-gateway");
+    navigate("/customer/components/promo");
   };
 
   return (

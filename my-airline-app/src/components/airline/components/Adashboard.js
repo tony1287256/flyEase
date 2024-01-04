@@ -73,9 +73,9 @@ const AirlineDashboard = () => {
               <div className="card-body">
                 <h5 className="card-title">Total Flights</h5>
                 <p className="card-text">{totalFlights}</p>
-                <Link to="/airline/components/allflights" className="btn btn-sm btn-primary">
+                {/* <Link to="/airline/components/allflights" className="btn btn-sm btn-primary">
                   Details
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ const AirlineDashboard = () => {
               <div className="card-body">
                 <h5 className="card-title">Total Income</h5>
                 <p className="card-text">₹{totalIncome}</p>
-                <button className="btn btn-sm btn-primary">Details</button>
+                {/* <button className="btn btn-sm btn-primary">Details</button> */}
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ const AirlineDashboard = () => {
               <div className="card-body">
                 <h5 className="card-title">Total Passengers</h5>
                 <p className="card-text">{totalPassengers}</p>
-                <button className="btn btn-sm btn-primary">Details</button>
+                {/* <button className="btn btn-sm btn-primary">Details</button> */}
               </div>
             </div>
           </div>

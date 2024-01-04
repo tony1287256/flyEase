@@ -35,11 +35,10 @@ function Login() {
 
         switch (role) {
           case "CUSTOMER":
-            navigate("/customer/components/dashboard");
+            navigate("/customer/components/promo");
             break;
           case "AIRLINE":
-            navigate("/airline/components/Adashboard",{ state: { userId: response.data.id } });
-           
+            navigate("/airline/components/Adashboard", { state: { userId: response.data.id } });
             break;
           case "EXECUTIVE":
             navigate("/executive/edashboard");
@@ -62,7 +61,9 @@ function Login() {
         <div className="col-md-6">
           <div className="card">
             <div className="card-header">
-              <h3>Login</h3>
+              <h3>
+                <i className="bi bi-door-open"></i> Login
+              </h3>
             </div>
             <div className="card-body">
               {msg !== null ? (
@@ -74,7 +75,9 @@ function Login() {
               )}
               <div className="row " style={{ textAlign: "right" }}>
                 <div className="col-md-6">
-                  <label>Enter Email/Username:</label>
+                  <label>
+                    <i className="bi bi-person"></i> Enter Email/Username:
+                  </label>
                 </div>
                 <div className="col-md-6 mb-4">
                   <input
@@ -86,7 +89,9 @@ function Login() {
               </div>
               <div className="row" style={{ textAlign: "right" }}>
                 <div className="col-md-6">
-                  <label>Enter Password:</label>
+                  <label>
+                    <i className="bi bi-lock"></i> Enter Password:
+                  </label>
                 </div>
                 <div className="col-md-6">
                   <input
@@ -98,11 +103,8 @@ function Login() {
               </div>
             </div>
             <div className="card-footer" style={{ textAlign: "right" }}>
-              <button
-                className="btn btn-danger"
-                onClick={() => doLogin()}
-              >
-                Login
+              <button className="btn btn-danger" onClick={() => doLogin()}>
+                <i className="bi bi-box-arrow-in-right"></i> Login
               </button>
             </div>
           </div>
@@ -114,7 +116,7 @@ function Login() {
                 className="btn btn-danger"
                 onClick={() => navigate("/auth/signup")}
               >
-                Sign Up
+                <i className="bi bi-person-plus"></i> Sign Up
               </button>
             </span>
           </div>

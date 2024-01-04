@@ -35,18 +35,18 @@ function AirlineNavbar({ func }) {
               <Button variant="outline-light">Home 🏠</Button>
             </Nav.Link>
 
-            <Nav.Link onClick={() => navigate('/airline/schedule')}>
-              <Button variant="outline-light">Schedule 📅</Button>
+            <Nav.Link onClick={() => navigate('/airline/components/flightadd')}>
+              <Button variant="outline-light">Add Flight</Button>
             </Nav.Link>
-            <Nav.Link onClick={() => navigate('/airline/components/addflight')}>
+            {/* <Nav.Link onClick={() => navigate('/airline/components/addflight')}>
               <Button variant="outline-light">Add flight</Button>
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link onClick={() => navigate('/airline/components/addingseats')}>
               <Button variant="outline-light">Add seats</Button>
             </Nav.Link>
             <NavDropdown title="Routes" id="dropdown-basic-button">
               <NavDropdown.Item onClick={handleAddRoutesClick}>Add Routes</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleRouteSliderClick}>Delete route</NavDropdown.Item>
+              {/* <NavDropdown.Item onClick={handleRouteSliderClick}>Delete route</NavDropdown.Item> */}
               <NavDropdown.Item onClick={handleShowRouteClick}>Show all routes route</NavDropdown.Item>
               {/* Add more dropdown items as needed */}
               {/* Add more dropdown items as needed */}

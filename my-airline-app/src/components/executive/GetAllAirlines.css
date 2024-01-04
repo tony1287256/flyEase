@@ -1,0 +1,23 @@
+/* GetAllAirlines.css */
+.list-group-container {
+  max-width: 600px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the container */
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f8f9fa; /* Light gray background color */
+  border: 1px solid #dee2e6; /* Border color */
+}
+
+.airline-details {
+  flex: 1;
+}
+
+.delete-button {
+  margin-left: 10px; /* Adjust the left margin of the delete button */
+}

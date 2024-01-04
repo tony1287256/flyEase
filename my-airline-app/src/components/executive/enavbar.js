@@ -15,15 +15,18 @@ function ENavbarComponent({func}) {
       <Navbar bg="danger" data-bs-theme="blue" style={{ marginLeft: '4px', marginRight: '5px' }}>
         <Container>
 <Navbar.Brand href="#home">FlyEase</Navbar.Brand>
-       {//   <Navbar.Brand onClick={()=>navigate('/customer/dashboard')}>Customer Dashboard </Navbar.Brand>
-}
-          <Nav className="mr-auto">
-            <Nav.Link onClick={() => navigate('/executive/addairline')}>
+         {/* <Navbar.Brand onClick={()=>navigate('/executive/ehome')}>Home </Navbar.Brand> */}
+         <Nav className="mr-auto">
+            <Nav.Link onClick={() => navigate('/executive/edashboard')}>
+              <Button variant="outline-light">Home</Button>
+            </Nav.Link>
+         
+            {/* <Nav.Link onClick={() => navigate('/executive/addairline')}>
               <Button variant="outline-light">Add AIRLINE</Button>
             </Nav.Link>
             <Nav.Link onClick={() => navigate('/executive/deleteairline')}>
               <Button variant="outline-light">Delete AIRLINE</Button>
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link onClick={() => navigate('/executive/viewairline')}>
               <Button variant="outline-light">View AIRLINE</Button>
             </Nav.Link>
