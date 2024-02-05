@@ -1,5 +1,3 @@
-// BookingPage.js
-
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -18,6 +16,7 @@ const BookingPage = () => {
   const [availableSeats, setAvailableSeats] = useState([]);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
+  const [errorMessages, setErrorMessages] = useState([]);
 
   useEffect(() => {
     const fetchAvailableSeats = async () => {
@@ -57,6 +56,22 @@ const BookingPage = () => {
 
   const handleBookNow = async () => {
     try {
+      // Validate passenger details
+      const invalidPassengers = passengers.filter(passenger => (
+        passenger.name.trim() === "" ||
+        passenger.age <= 0 ||
+        passenger.seatNumber === ""
+      ));
+
+      if (invalidPassengers.length > 0) {
+        const invalidPassengerIndexes = invalidPassengers.map(passenger => passengers.indexOf(passenger) + 1);
+        setErrorMessages([`Invalid details for passenger(s) ${invalidPassengerIndexes.join(', ')}. Please fill in all fields.`]);
+        return;
+      }
+
+      // Clear previous error messages
+      setErrorMessages([]);
+
       // Add +1 to the user id
       const userId = parseInt(localStorage.getItem("id"), 10) + 1;
 
@@ -79,6 +94,9 @@ const BookingPage = () => {
   const handleConfirmationModalClose = () => {
     // Close confirmation modal
     setShowConfirmationModal(false);
+
+    // Clear error messages
+    setErrorMessages([]);
 
     // Navigate to payment gateway or any other page
     navigate("/customer/components/promo");
@@ -155,6 +173,13 @@ const BookingPage = () => {
                 Book Now
               </button>
             </div>
+            {errorMessages.length > 0 && (
+              <div className="alert alert-danger mt-3" role="alert">
+                {errorMessages.map((message, index) => (
+                  <p key={index}>{message}</p>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="col-md-4">
@@ -189,6 +214,7 @@ const BookingPage = () => {
                               <p>
                                 <strong>Name:</strong> {passenger.name || 'N/A'}<br />
                                 <strong>Age:</strong> {passenger.age || 'N/A'}<br />
+                                <strong>Gender:</strong> {passenger.gender || 'N/A'}<br />
                                 <strong>Seat Number:</strong> {passenger.seat && passenger.seat.seatNo || 'N/A'}<br />
                               </p>
                             </div>

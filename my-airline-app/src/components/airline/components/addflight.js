@@ -177,11 +177,11 @@ const AddFlightForm = () => {
             </div>
           </div>
 
-          <div className="col-md-6">
+          
+        </div>
+      </div><div className="col-md-6">
             <RoutesList />
           </div>
-        </div>
-      </div>
     </div>
   );
 };

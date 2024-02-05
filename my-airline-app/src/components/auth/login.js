@@ -114,7 +114,7 @@ function Login() {
               &nbsp;&nbsp;{" "}
               <button
                 className="btn btn-danger"
-                onClick={() => navigate("/auth/signup")}
+                onClick={() => navigate("/auth/customsinup")}
               >
                 <i className="bi bi-person-plus"></i> Sign Up
               </button>

@@ -7,7 +7,7 @@ const SeatAvailability = ({ fid }) => {
   useEffect(() => {
     const fetchAvailability = async () => {
       try {
-        const response = await axios.get(`http://localhost:8081/getavaliable/${fid}`);
+        const response = await axios.get(`http://localhost:8081/getall/${fid}`);
         console.log("Complete API Response:", response); // Log the complete API response
         const seatData = response.data;
 
@@ -37,16 +37,17 @@ const SeatAvailability = ({ fid }) => {
       <p>Available Seats: {availableSeats.length}</p>
       <div>
         <p>Visible Seat Status:</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "space-around" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
           {availableSeats.map((seatNumber, index) => (
             <button
               key={`${seatNumber}-${index}`} // Ensure uniqueness by adding an index
               style={{
+                width: "calc(50% - 80px)", // Adjusted width for two columns with gap
+                height: "50px", // Adjusted height for a box shape
                 margin: "0 0 10px 0",
-                padding: "5px 10px",
                 backgroundColor: 'green', // Modify the colors as needed
                 color: "#fff",
-                borderRadius: "5px",
+                borderRadius: "5px", // Adjusted border radius for a rounded corner
                 cursor: 'pointer',
               }}
             >

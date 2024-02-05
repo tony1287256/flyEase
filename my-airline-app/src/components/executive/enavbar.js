@@ -20,10 +20,11 @@ function ENavbarComponent({func}) {
             <Nav.Link onClick={() => navigate('/executive/edashboard')}>
               <Button variant="outline-light">Home</Button>
             </Nav.Link>
-         
-            {/* <Nav.Link onClick={() => navigate('/executive/addairline')}>
+            <Nav.Link onClick={() => navigate('/executive/addairline')}>
               <Button variant="outline-light">Add AIRLINE</Button>
             </Nav.Link>
+         
+            {/* 
             <Nav.Link onClick={() => navigate('/executive/deleteairline')}>
               <Button variant="outline-light">Delete AIRLINE</Button>
             </Nav.Link> */}

@@ -34,12 +34,13 @@ import ShowRoutes from './components/airline/components/showroutes';
 import AddFlightForm from './components/airline/components/addflight';
 import SeatAvailability from './components/customer/seatavalibility';
 import ConfirmationPage from './components/customer/components/confirmation';
-import YourParentComponent from './components/airline/components/parentsinup'; 
+
 import RouteAccordion from './components/airline/components/routeaccordino';
 import UpdateFlight from './components/airline/components/updateFlight';
 import AirlineHelp from './components/airline/components/airlinehelp';
 import SeatAddition from './components/airline/components/addingseats';
 import FlightsPage from './components/airline/components/allflights';
+import YourParentComponent from './components/airline/components/parentsinup';
 
 // Import other components
 
