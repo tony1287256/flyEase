@@ -3,21 +3,16 @@ import axios from "axios";
 
 const SeatAvailability = ({ fid }) => {
   const [availableSeats, setAvailableSeats] = useState([]);
+  const [bookedSeats, setBookedSeats] = useState([]);
 
   useEffect(() => {
     const fetchAvailability = async () => {
       try {
-        const response = await axios.get(`http://localhost:8081/getall/${fid}`);
-        console.log("Complete API Response:", response); // Log the complete API response
+        const response = await axios.get(`http://localhost:8081/getavaliable/${fid}`);
         const seatData = response.data;
 
         if (Array.isArray(seatData)) {
-          console.log("Original seat data:", seatData); // Log the original seat data
-          
-          // Remove duplicate seat numbers
           const uniqueSeatData = Array.from(new Set(seatData));
-          console.log("Unique seat data:", uniqueSeatData); // Log the unique seat data
-
           const seatNumbers = uniqueSeatData.map(seat => seat);
           setAvailableSeats(seatNumbers);
         } else {
@@ -31,6 +26,12 @@ const SeatAvailability = ({ fid }) => {
     fetchAvailability();
   }, [fid]);
 
+  const handleSeatClick = (seatNumber) => {
+    if (!bookedSeats.includes(seatNumber)) {
+      setBookedSeats([...bookedSeats, seatNumber]);
+    }
+  };
+
   return (
     <div style={{ marginBottom: "50px" }}>
       <h4>Seat Availability</h4>
@@ -40,16 +41,21 @@ const SeatAvailability = ({ fid }) => {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
           {availableSeats.map((seatNumber, index) => (
             <button
-              key={`${seatNumber}-${index}`} // Ensure uniqueness by adding an index
+              key={`${seatNumber}-${index}`}
               style={{
-                width: "calc(50% - 80px)", // Adjusted width for two columns with gap
-                height: "50px", // Adjusted height for a box shape
+                width: "calc(50% - 80px)",
+                height: "50px",
                 margin: "0 0 10px 0",
-                backgroundColor: 'green', // Modify the colors as needed
+                backgroundColor: bookedSeats.includes(seatNumber) || availableSeats.indexOf(seatNumber) === -1
+                  ? 'red' // Change color for previously booked seats or seats not in the dropdown
+                  : 'green',
                 color: "#fff",
-                borderRadius: "5px", // Adjusted border radius for a rounded corner
-                cursor: 'pointer',
+                borderRadius: "5px",
+                cursor: bookedSeats.includes(seatNumber) || availableSeats.indexOf(seatNumber) === -1
+                  ? 'not-allowed' // Disable click for previously booked seats or seats not in the dropdown
+                  : 'pointer',
               }}
+              onClick={() => handleSeatClick(seatNumber)}
             >
               {seatNumber}
             </button>
